@@ -1,0 +1,415 @@
+/* ======== Color Schemes ======== */
+
+:root {
+
+	/* background */
+	--bg0: rgb(var(--bg0-raw));
+	--bg:  rgb(var(--bg-raw));
+	--bg2: rgb(var(--bg2-raw));
+	--bg3: rgb(var(--bg3-raw));
+	--bg4: rgb(var(--bg4-raw));
+	
+	/* foreground */
+	--fg0: rgb(var(--fg0-raw));
+	--fg:  rgb(var(--fg-raw));
+	--fg2: rgb(var(--fg2-raw));
+	--fg3: rgb(var(--fg3-raw));
+	--fg4: rgb(var(--fg4-raw));
+
+	/* accents */
+	--accent-color: rgb(var(--accent-color-raw));
+
+
+	/* raw colors that don't change ever */
+	--light0-raw: 255, 255, 255;
+	--light1-raw: 243, 243, 243;
+	--light2-raw: 221, 221, 221;
+	--light3-raw: 196, 196, 196;
+	--light4-raw: 173, 173, 173;
+
+	--dark0-raw: 0, 0, 0;
+	--dark1-raw: 34, 34, 34;
+	--dark2-raw: 46, 46, 46;
+	--dark3-raw: 59, 59, 59;
+	--dark4-raw: 73, 73, 73;
+	/* raw colors that don't change ever */
+
+	/* contextual raw assignments */
+	--bg0-raw: var(--light0-raw);
+	--bg-raw: var(--light1-raw);
+	--bg2-raw: var(--light2-raw);
+	--bg3-raw: var(--light3-raw);
+	--bg4-raw: var(--light4-raw);
+
+	--fg0-raw: var(--dark0-raw);
+	--fg-raw: var(--dark1-raw);
+	--fg2-raw: var(--dark2-raw);
+	--fg3-raw: var(--dark3-raw);
+	--fg4-raw: var(--dark4-raw);
+
+	--accent-color-raw: 51, 170, 97;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+
+		/* background */
+		--bg0-raw: var(--dark0-raw);
+		--bg-raw: var(--dark1-raw);
+		--bg2-raw: var(--dark2-raw);
+		--bg3-raw: var(--dark3-raw);
+		--bg4-raw: var(--dark4-raw);
+
+		/* foreground */
+		--fg0-raw: var(--light0-raw);
+		--fg-raw: var(--light1-raw);
+		--fg2-raw: var(--light2-raw);
+		--fg3-raw: var(--light3-raw);
+		--fg4-raw: var(--light4-raw);
+	
+
+		/* accents */
+		--accent-color-raw: 46, 223, 113;
+	}
+}
+
+/* ======== Styles ======== */
+
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	-webkit-text-size-adjust: 100%;
+
+	--content-width: 44rem;
+	--body-padding: 3rem;
+	--left-content-margin: calc( (100vw - var(--content-width)) / 2 );
+	--right-content-margin: calc( (100vw - var(--content-width)) / 2 );
+	
+	--content-gutter-width: 13rem;
+	--sidebar-gutter-width: 13rem;
+	--gutter-padding: 1rem;
+	
+	--left-safe-area: max(0rem, env(safe-area-inset-left));
+	--right-safe-area: max(0rem, env(safe-area-inset-right));
+	--bottom-safe-area: max(0rem, env(safe-area-inset-bottom));
+
+	--font-size: 12pt;
+	--serif-font: 'Roboto Slab', serif;
+	--sans-serif-font: 'Ubuntu Mono', monospace;
+
+	padding: 0;
+	margin: 0;
+
+	font-size: var(--font-size);
+	font-family: var(--sans-serif-font);
+
+	color: var(--fg);
+	background-color: var(--bg0)
+}
+
+a {
+	color: var(--accent-color);
+	font-weight: 400;
+	text-decoration: underline;
+}
+a:hover {
+	color: rgba(var(--accent-color-raw), 0.8);
+}
+a:visited {
+	text-decoration: none;
+}
+
+h1 {
+	font-size: calc(var(--font-size) * 3);
+	margin: 0;
+	margin-bottom: 0.5em;
+}
+
+p {
+	font-family: var(--serif-font);
+	font-size: calc(var(--font-size) );
+	font-weight: 300;
+	line-height: 150%;
+	letter-spacing: 0.02ch;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+}
+
+body {
+	background-color: var(--bg);
+	min-height: 100vh;
+
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: var(--left-content-margin);
+	margin-right: 0;
+	
+	padding-top: var(--body-padding);
+	padding-bottom: var(--body-padding);
+	padding-left: var(--body-padding);
+	padding-right: calc( var(--body-padding) + var(--right-content-margin) );
+}
+
+article, section {
+	--article-padding: 1rem;
+	
+	margin-top: 1.5rem;
+	margin-right: calc( -1 * var(--content-gutter-width) );
+	padding: var(--article-padding);
+	padding-right: calc( var(--content-gutter-width) + var(--article-padding) );
+}
+article *:first-child, section *:first-child {
+	margin-top: 0;
+}
+article *:last-child, section *:last-child {
+	margin-bottom: 0;
+}
+
+pre {
+	overflow-x: scroll;
+	
+	margin-bottom: 0;
+	padding: 1.5em;
+
+	background-color: var(--bg2);
+	border: var(--bg4) solid 0.75pt;
+}
+pre:hover {
+	margin-right: calc( -1 * var(--content-gutter-width) );
+	padding-right: var(--content-gutter-width);
+}
+p code {
+	background-color: var(--bg3);
+	padding-top: 0.15em;
+	padding-bottom: 0.15em;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+}
+
+aside {
+	font-size: 0.9em;
+	background-color: var(--bg0);
+	padding: 1em;
+	margin: 1.5em;
+}
+
+footer {
+	margin-top: 1rem;
+	padding: 1rem;
+	padding-bottom: calc( 1rem + var(--bottom-safe-area) );
+}
+footer hr {
+	border-color: var(--fg);
+	border-style: solid;
+	margin: 0 0 1rem 0;
+}
+footer p {
+	text-align: center;
+	font-family: var(--sans-serif-font);
+	margin: 0;
+}
+
+/* ======== Navigation ======== */
+
+nav, nav.xray {
+	--bar-color: var(--fg);
+	
+	position: fixed;
+	width: calc( var(--sidebar-gutter-width) - var(--gutter-padding) );
+	top: max( min( 1%, 20rem ), 8rem );
+	left: calc( var(--left-content-margin) - var(--sidebar-gutter-width) );
+	padding: 0.5rem;
+	padding-right: 0;
+	border-right: 3pt solid var(--bar-color);
+}
+nav a {
+	display: block;
+	text-decoration: none;
+	color: var(--fg);
+	padding: 0.5rem;
+}
+nav a.nested {
+	padding-left: 1rem;
+}
+
+/* ======== Node Summary ======== */
+
+node-summary {
+	font-size: 80%;
+	display: block;
+	background-color: var(--bg0);
+	padding: 0.5rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 1.5rem;
+	outline: 0.5pt dashed rgba(var(--fg4-raw), 0.5);
+	width: auto;
+}
+node-summary * {
+	display: block;
+}
+node-summary *::before {
+	font-size: 80%;
+	color: var(--fg3);
+}
+node-server::before {
+	content: "hostname: ";
+}
+node-network::before {
+	content: "network: ";
+}
+node-protocol::before {
+	content: "protocol: ";
+}
+
+/* ======== Misc Styles ========*/
+
+.copyleft {
+	font-size: 1.25em;
+	display: inline-block;
+	transform: scale(-1, 1);
+}
+
+
+/* ======== Landscape Phones and Tablets ======== */
+
+@media screen and (max-width:1100px) {
+	:root {
+		--sidebar-gutter-width: 18vw;
+		--content-gutter-width: 0rem;
+		--left-content-margin: calc( var(--sidebar-gutter-width) + var(--left-safe-area) );
+		--right-content-margin: max( 0rem, calc( 100vw - var(--content-width) - var(--left-content-margin) - var(--right-safe-area) ) );
+	}
+	nav, nav.xray {
+		top: var(--body-padding);
+	}
+}
+
+
+/* ======== Mobile-Portrait ======== */
+
+@media screen and (max-width: 600px) {
+	:root {
+		--sidebar-gutter-width: 0rem;
+		--content-width: 100vw;
+		--body-padding: 1.5rem;
+
+		--font-size: 12pt;
+	}
+	body {
+		padding-top: 0rem;
+	}
+	node-summary {
+		margin-left: calc( -1 * var(--body-padding));
+		margin-right: calc( -1 * var(--body-padding));
+		margin-bottom: 0rem;
+		
+		padding: var(--body-padding);
+		padding-top: calc( var(--body-padding) );
+		padding-bottom: 0rem;
+		outline: none;
+	}
+	nav, nav.xray {
+		position: relative;
+		left: initial;
+		top: initial;
+		width: auto;
+		padding: var(--body-padding);
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		margin-top: 0rem;
+		margin-bottom: 2rem;
+		margin-left: calc( -1 * var(--body-padding));
+		margin-right: calc( -1 * var(--body-padding));
+
+		background-color: var(--bg0);
+		border: none;
+	}
+	nav a {
+		padding-left: 0;
+		padding-right: 0;
+		margin-top: 0.5rem;
+	}
+	article, section {
+		padding: 0rem;
+	}
+	footer {
+		margin-top: 2rem;
+		padding: 0rem;
+	}
+
+}
+
+/* ======== Pop Out Asides ======== */
+
+@media screen and (min-width: 1100px) {
+	aside, aside.xray {
+		position: absolute;
+		width: calc( var(--content-gutter-width) - ( 2 * var(--gutter-padding) ) );
+		right: var(--gutter-padding);
+		margin: 0;
+	}
+	aside p {
+		margin: 6pt 0pt 0pt 0pt;
+	}
+}
+
+/* ======== Enable Hover Elements ======== */
+
+@media screen and (any-hover: hover) {
+	
+	nav:hover {
+		--bar-color: var(--accent-color);
+	}
+	nav a:hover {
+		color: var(--accent-color);
+		background-color: var(--bg);
+	}
+	nav a:hover::after {
+		content: "()";
+	}
+}
+
+/* ======== Enable Xray on Larger Screens ======== */
+
+@media screen and (min-width: 600px) and (any-hover: hover) {
+
+	.xray {
+		position: relative;
+	}
+	.xray:hover {
+		outline: 0.5pt dashed rgba(var(--fg-raw), 0.5);
+	}
+	.xray:hover::before {
+		content: attr(data-type);
+		font-size: 0.5rem;
+		font-weight: bold;
+		position: absolute;
+		display: inline;
+		padding: 0.2em 0.4em;
+		top: -0.9rem;
+		left: 0;
+		outline: 0.5pt dashed rgba(var(--fg-raw), 0.5);
+	}
+	.inner.xray:hover {
+		outline-offset: -0.25pt;
+	}
+	.inner.xray:hover::before {
+		top: 0.5rem;
+		left: 0.5rem;
+	}
+	.right.xray:hover::before {
+		left: initial;
+		right: 0.25rem;
+	}
+	.right.inner.xray:hover::before {
+		left: initial;
+		right: 0.5rem;
+	}
+	a.xray:hover::before {
+		content: none;
+		color: initial;
+	}
+}
