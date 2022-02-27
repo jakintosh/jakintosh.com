@@ -3,35 +3,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&amp;family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <title>jakintosh</title>
 </head>
 <body>
-    <node-summary class="xray" data-type="node-summary">
-        <node-protocol>hyper text transfer protocol (http://)</node-protocol>
-        <node-network>world wide web (www)</node-network>
-        <node-server>jakintosh.com</node-server>
-    </node-summary>
     <nav class="xray" data-type="navigation">
-        <a class="xray inner right" href="./" data-type="section">/home</a> <a class="xray inner right" href="./posts/" data-type="section">/blog</a> <a class="xray inner right" href="./about/" data-type="section">/about</a>
+        <a class="xray inner right" href="./" data-type="section">/home</a> <a class="xray inner right" href="./posts/" data-type="section">/posts</a> <a class="xray inner right" href="./coalescence/" data-type="section">/coalescence</a> <a class="xray inner right" href="./about/" data-type="section">/about</a>
     </nav>
-    <article class="xray" data-type="landing">
+    <section>
         <h1>welcome</h1>
         <p>My name is <a href="https://github.com/jakintosh">@jakintosh</a>.</p>
-        <p>This website is a space for me to share my work on a philosophical framework called <a href="">cooperative coalescence</a>. It is the result of my personal exploration into existential questions: "Why are we here?", "Why are things the way they are?", "How are things supposed to be?". It is informed by studying history, economics, ecology, computer science, complex systems, and information theory.</p>
-        <aside class="xray" data-type="aside">
-            I've been heavily inspired by Marxism, Holochain, and many others.
-        </aside>
-        <p>I've reasoned about this framework from first principles, which means I've questioned and reexamined every single assumption I encountered, down to the philosophical nature of reality. I've been looking for truth, and I believe I've stumbled upon the edges; it is now my duty to share it.</p>
+        <p>This website is a space for me to share my work on a philosophical framework called <a href="coalescence/">cooperative coalescence</a>. It is the result of my personal exploration into existential questions: "Why are we here?", "Why are things the way they are?", <em>"How are things supposed to be?"</em>. It is informed by studying history, economics, ecology, computer science, complex systems, and information theory.</p>
+        <p>I've reasoned about this framework from first principles, which means I've questioned and reexamined every single assumption I encountered, down to the philosophical nature of reality. <strong>I've been looking for truth, and I believe I've stumbled upon the edges; it is now my duty to share it.</strong></p>
         <p>Why should you care about an internet stranger's philosophical framework for structuring society and finding meaning in existence? Well, you don't have to. You can read everything I've written and make up your own mind.</p>
-        <p>If you'd like a bit of résumé though: this site was built by hand to be resource efficient and purpose built for sharing information. No JavaScript, no Google Analytics, no tracking, no cookies, <em>no ads</em>. Right-click and <code>View Source</code> if you'd like to—it's simple, clean, and attention has been paid to the details. The HTML templates and CSS were written by me, as well as the <a href="https://github.com/jakintosh/site-builder-rs">rust source code</a> for the program that generates this actual website. I think it can give you an idea of the care I put into being sure that I've done my due diligence.</p>
-        <p>— jak, january 2022</p>
-    </article>
+        <p>— jak, february 2022</p><br>
+        <site-sections>
+            <h1>site sections</h1>
+            <content-preview class="xray inner right" data-type="post">
+                <a href="/coalescence"></a>
+                <content-title>cooperative coalescence</content-title>
+            </content-preview>
+        </site-sections>
+        <recent-posts>
+            <h1>recent posts</h1>
+            <p>No posts, yet. Check back soon.</p>
+        </recent-posts>
+    </section>
     <footer class="xray" data-type="footer">
         <hr>
+        <node-summary class="xray" data-type="node-summary">
+            <node-protocol>hyper text transfer protocol (http://)</node-protocol>
+            <node-network>world wide web (www)</node-network>
+            <node-server>jakintosh.com</node-server>
+        </node-summary>
         <p><span class="copyleft">©</span> ∞ Human Kind</p>
     </footer>
 </body>

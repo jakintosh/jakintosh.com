@@ -1,3 +1,7 @@
+/* ======== Font Import ========= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Rubik:ital,wght@0,300;0,400;0,700;1,400&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 /* ======== Color Schemes ======== */
 
 :root {
@@ -17,22 +21,30 @@
 	--fg4: rgb(var(--fg4-raw));
 
 	/* accents */
+	--interactive-color: rgb(var(--interactive-color-raw));
+	--interactive-color-invert: rgb(var(--interactive-color-invert-raw));
+	
 	--accent-color: rgb(var(--accent-color-raw));
+	--accent-color-invert: rgb(var(--accent-color-invert-raw));
 
 
 	/* raw colors that don't change ever */
 	--light0-raw: 255, 255, 255;
-	--light1-raw: 243, 243, 243;
-	--light2-raw: 221, 221, 221;
-	--light3-raw: 196, 196, 196;
-	--light4-raw: 173, 173, 173;
+	--light1-raw: 246, 246, 246;
+	--light2-raw: 220, 220, 220;
+	--light3-raw: 200, 200, 200;
+	--light4-raw: 180, 180, 180;
+	--interactive-light-raw: 51, 170, 97;
+	--accent-light-raw: 125, 70, 255;
 
 	--dark0-raw: 0, 0, 0;
-	--dark1-raw: 34, 34, 34;
-	--dark2-raw: 46, 46, 46;
-	--dark3-raw: 59, 59, 59;
-	--dark4-raw: 73, 73, 73;
-	/* raw colors that don't change ever */
+	--dark1-raw: 20, 20, 20;
+	--dark2-raw: 40, 40, 40;
+	--dark3-raw: 60, 60, 60;
+	--dark4-raw: 80, 80, 80;
+	--interactive-dark-raw: 46, 223, 113;
+	--accent-dark-raw: 154, 110, 255;
+	/* --accent-dark-raw: rgb(154, 110, 255); */
 
 	/* contextual raw assignments */
 	--bg0-raw: var(--light0-raw);
@@ -47,7 +59,11 @@
 	--fg3-raw: var(--dark3-raw);
 	--fg4-raw: var(--dark4-raw);
 
-	--accent-color-raw: 51, 170, 97;
+	--interactive-color-raw: var(--interactive-light-raw);
+	--interactive-color-invert-raw: var(--interactive-dark-raw);
+
+	--accent-color-raw: var(--accent-light-raw);
+	--accent-color-invert-raw: var(--accent-dark-raw);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -66,10 +82,14 @@
 		--fg2-raw: var(--light2-raw);
 		--fg3-raw: var(--light3-raw);
 		--fg4-raw: var(--light4-raw);
-	
 
-		/* accents */
-		--accent-color-raw: 46, 223, 113;
+		/* interactive */
+		--interactive-color-raw: var(--interactive-dark-raw);
+		--interactive-color-invert-raw: var(--interactive-light-raw);
+	
+		/* accent */
+		--accent-color-raw: var(--accent-dark-raw);
+		--accent-color-invert-raw: var(--accent-light-raw);
 	}
 }
 
@@ -96,43 +116,80 @@
 	--bottom-safe-area: max(0rem, env(safe-area-inset-bottom));
 
 	--font-size: 12pt;
-	--serif-font: 'Roboto Slab', serif;
-	--sans-serif-font: 'Ubuntu Mono', monospace;
+	--reading-font: 'Inter', serif;
+	--heading-font: 'Rubik', sans-serif;
+	--impact-font: 'Ubuntu Mono', sans-serif;
 
 	padding: 0;
 	margin: 0;
 
 	font-size: var(--font-size);
-	font-family: var(--sans-serif-font);
+	font-family: var(--reading-font);
 
 	color: var(--fg);
 	background-color: var(--bg0)
 }
 
 a {
-	color: var(--accent-color);
-	font-weight: 400;
+	color: var(--fg0);
+	font-family: var(--impact-font);
+	font-weight: 700;
 	text-decoration: underline;
 }
+p a:hover::after {
+	content: " ->";
+	font-family: var(--reading-font);
+}
 a:hover {
-	color: rgba(var(--accent-color-raw), 0.8);
+	color: var(--interactive-color);
 }
 a:visited {
 	text-decoration: none;
 }
 
+strong {
+	--accent-color: var(--accent-color-invert);
+	--interactive-color: var(--interactive-color-invert);
+	font-family: var(--impact-font);
+	font-style: normal;
+	color: var(--bg);
+	background-color: var(--fg);
+	padding: 0.2em 0.3em 0.2em 0.3em;
+	margin: -0.2em 0.2em -0.2em 0em;
+	box-shadow: var(--accent-color) 0.2em 0.2em;
+}
+@media (prefers-color-scheme: dark) {
+	strong { 
+		background-color: var(--accent-color);
+		color: var(--fg);
+		box-shadow: var(--fg) 0.2em 0.2em;
+	}
+}
+
+em {
+	font-style: italic;
+	/* background-color: rgba( var(--accent-color-raw), 0.25);
+	padding: 0.1em;
+	margin: -0.1em; */
+	/* border-bottom: 0.2em solid rgba(var(--fg-raw), 0.5); */
+}
+
 h1 {
+	font-family: var(--heading-font);
 	font-size: calc(var(--font-size) * 3);
-	margin: 0;
-	margin-bottom: 0.5em;
+	line-height: 90%;
+	margin-block-start: 0;
+	margin-block-end: 0.5em;
+}
+h2 {
+	margin-block-start: 1.5em;
+	margin-block-end: 0.5em;
 }
 
 p {
-	font-family: var(--serif-font);
 	font-size: calc(var(--font-size) );
 	font-weight: 300;
-	line-height: 150%;
-	letter-spacing: 0.02ch;
+	line-height: 170%;
 	margin-top: 1.33em;
 	margin-bottom: 1.33em;
 }
@@ -156,14 +213,17 @@ article, section {
 	--article-padding: 1rem;
 	
 	margin-top: 1.5rem;
-	margin-right: calc( -1 * var(--content-gutter-width) );
 	padding: var(--article-padding);
+}
+article.with-gutter, section.with-gutter {
+
+	margin-right: calc( -1 * var(--content-gutter-width) );
 	padding-right: calc( var(--content-gutter-width) + var(--article-padding) );
 }
-article *:first-child, section *:first-child {
+article > *:first-child, section > *:first-child {
 	margin-top: 0;
 }
-article *:last-child, section *:last-child {
+article > *:last-child, section > *:last-child {
 	margin-bottom: 0;
 }
 
@@ -181,11 +241,13 @@ pre:hover {
 	padding-right: var(--content-gutter-width);
 }
 p code {
+	font-family: var(--impact-font);
+	font-weight: lighter;
+	color: var(--fg0);
 	background-color: var(--bg3);
-	padding-top: 0.15em;
-	padding-bottom: 0.15em;
-	padding-left: 0.3em;
-	padding-right: 0.3em;
+	padding: 0.2em 0.3em 0.2em 0.3em;
+	margin: -0.2em 0.1em -0.2em 0em;
+	box-shadow: var(--fg4) 0.15em 0.15em;
 }
 
 aside {
@@ -207,9 +269,10 @@ footer hr {
 }
 footer p {
 	text-align: center;
-	font-family: var(--sans-serif-font);
+	font-family: var(--impact-font);
 	margin: 0;
 }
+
 
 /* ======== Navigation ======== */
 
@@ -222,28 +285,31 @@ nav, nav.xray {
 	left: calc( var(--left-content-margin) - var(--sidebar-gutter-width) );
 	padding: 0.5rem;
 	padding-right: 0;
-	border-right: 3pt solid var(--bar-color);
+	border-right: 2pt solid var(--bar-color);
 }
 nav a {
 	display: block;
-	text-decoration: none;
 	color: var(--fg);
+	font-weight: 400;
 	padding: 0.5rem;
+	text-decoration: none;
+	text-shadow: none;
 }
 nav a.nested {
 	padding-left: 1rem;
 }
 
+
 /* ======== Node Summary ======== */
 
 node-summary {
+	font-family: var(--impact-font);
 	font-size: 80%;
 	display: block;
 	background-color: var(--bg0);
 	padding: 0.5rem;
-	margin-left: 1rem;
-	margin-right: 1rem;
-	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+	margin-bottom: 1rem;
 	outline: 0.5pt dashed rgba(var(--fg4-raw), 0.5);
 	width: auto;
 }
@@ -262,6 +328,81 @@ node-network::before {
 }
 node-protocol::before {
 	content: "protocol: ";
+}
+
+
+/* ======== Content Previews ======== */
+
+
+site-sections {
+	display: block;
+	margin-bottom: 4em;
+}
+
+recent-posts {
+	display: block;
+}
+recent-posts > a {
+
+	display: block;
+	padding: 0.75rem;
+	/* background-color: var(--bg2); */
+}
+recent-posts > a:hover::after {
+	content: "()";
+}
+
+
+content-preview {
+	--element-padding: 0.75rem;
+	
+	display: block;
+	box-sizing:content-box;
+	position: relative;
+	margin-bottom: var(--element-padding);
+	padding: var(--element-padding);
+	font-family: var(--impact-font);
+	background-color: var(--bg0);
+
+	box-shadow: var(--fg2) 0.15em 0.15em;
+}
+content-preview > a {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+content-preview:hover {
+	color: var(--interactive-color);
+	box-shadow: var(--accent-color) 0.3em 0.3em;
+}
+content-preview content-title {
+	display: inline-block;
+	font-size: 125%;
+	font-weight: 700;
+}
+content-preview published-date {
+	display: inline-block;
+	margin-left: 1em;
+	font-size: 80%;
+	color: var(--fg3);
+}
+
+x-article-header {
+	display: block;
+	margin-bottom: 1rem;
+}
+x-author {
+	font-weight: bold;
+	color: var(--fg3);
+}
+x-author::before {
+	content: "@";
+}
+x-date {
+	font-family: var(--impact-font);
+	color: var(--fg4);
 }
 
 /* ======== Misc Styles ========*/
@@ -302,23 +443,19 @@ node-protocol::before {
 		padding-top: 0rem;
 	}
 	node-summary {
-		margin-left: calc( -1 * var(--body-padding));
-		margin-right: calc( -1 * var(--body-padding));
-		margin-bottom: 0rem;
 		
 		padding: var(--body-padding);
 		padding-top: calc( var(--body-padding) );
-		padding-bottom: 0rem;
 		outline: none;
 	}
 	nav, nav.xray {
-		position: relative;
+		position: initial;
 		left: initial;
 		top: initial;
 		width: auto;
 		padding: var(--body-padding);
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 		margin-top: 0rem;
 		margin-bottom: 2rem;
 		margin-left: calc( -1 * var(--body-padding));
@@ -330,7 +467,7 @@ node-protocol::before {
 	nav a {
 		padding-left: 0;
 		padding-right: 0;
-		margin-top: 0.5rem;
+		/* margin-top: 0.5rem; */
 	}
 	article, section {
 		padding: 0rem;
@@ -361,10 +498,10 @@ node-protocol::before {
 @media screen and (any-hover: hover) {
 	
 	nav:hover {
-		--bar-color: var(--accent-color);
+		--bar-color: var(--interactive-color);
 	}
 	nav a:hover {
-		color: var(--accent-color);
+		color: var(--interactive-color);
 		background-color: var(--bg);
 	}
 	nav a:hover::after {
@@ -384,6 +521,7 @@ node-protocol::before {
 	}
 	.xray:hover::before {
 		content: attr(data-type);
+		font-family: var(--impact-font);
 		font-size: 0.5rem;
 		font-weight: bold;
 		position: absolute;
@@ -397,8 +535,8 @@ node-protocol::before {
 		outline-offset: -0.25pt;
 	}
 	.inner.xray:hover::before {
-		top: 0.5rem;
-		left: 0.5rem;
+		top: 0.25rem;
+		left: 0.25rem;
 	}
 	.right.xray:hover::before {
 		left: initial;
@@ -406,10 +544,6 @@ node-protocol::before {
 	}
 	.right.inner.xray:hover::before {
 		left: initial;
-		right: 0.5rem;
-	}
-	a.xray:hover::before {
-		content: none;
-		color: initial;
+		right: 0.25rem;
 	}
 }
