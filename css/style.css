@@ -116,6 +116,7 @@
 	--bottom-safe-area: max(0rem, env(safe-area-inset-bottom));
 
 	--font-size: 12pt;
+	--font-color: var(--fg);
 	--reading-font: 'Inter', serif;
 	--heading-font: 'Rubik', sans-serif;
 	--impact-font: 'Ubuntu Mono', sans-serif;
@@ -126,12 +127,12 @@
 	font-size: var(--font-size);
 	font-family: var(--reading-font);
 
-	color: var(--fg);
+	color: var(--font-color);
 	background-color: var(--bg0)
 }
 
 a {
-	color: var(--fg0);
+	color: var(--font-color);
 	font-family: var(--impact-font);
 	font-weight: 700;
 	text-decoration: underline;
@@ -150,9 +151,11 @@ a:visited {
 strong {
 	--accent-color: var(--accent-color-invert);
 	--interactive-color: var(--interactive-color-invert);
+	--font-color: var(--bg);
+
+	color: var(--font-color);
 	font-family: var(--impact-font);
 	font-style: normal;
-	color: var(--bg);
 	background-color: var(--fg);
 	padding: 0.2em 0.3em 0.2em 0.3em;
 	margin: -0.2em 0.2em -0.2em 0em;
@@ -160,8 +163,9 @@ strong {
 }
 @media (prefers-color-scheme: dark) {
 	strong { 
+		--font-color: var(--fg);
+
 		background-color: var(--accent-color);
-		color: var(--fg);
 		box-shadow: var(--fg) 0.2em 0.2em;
 	}
 }
