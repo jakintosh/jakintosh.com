@@ -117,6 +117,9 @@
 
 	--font-size: 12pt;
 	--font-color: var(--fg);
+	/* --reading-font: inherit;
+	--heading-font: sans-serif;
+	--impact-font: monospace; */
 	--reading-font: 'Inter', serif;
 	--heading-font: 'Rubik', sans-serif;
 	--impact-font: 'Ubuntu Mono', sans-serif;
@@ -172,10 +175,6 @@ strong {
 
 em {
 	font-style: italic;
-	/* background-color: rgba( var(--accent-color-raw), 0.25);
-	padding: 0.1em;
-	margin: -0.1em; */
-	/* border-bottom: 0.2em solid rgba(var(--fg-raw), 0.5); */
 }
 
 h1 {
@@ -186,8 +185,16 @@ h1 {
 	margin-block-end: 0.5em;
 }
 h2 {
-	margin-block-start: 1.5em;
-	margin-block-end: 0.5em;
+	font-size: 125%;
+	text-transform: uppercase;
+	margin-block-start: 2rem;
+	margin-block-end: 0.75rem;
+}
+h2:first-of-type {
+	margin-block-start: 0;
+}
+h2::before {
+	content: "--> ";
 }
 
 p {
@@ -196,6 +203,46 @@ p {
 	line-height: 170%;
 	margin-top: 1.33em;
 	margin-bottom: 1.33em;
+}
+
+ol {
+	font-family: var(--reading-font);
+	font-weight: 300;
+	line-height: 170%;
+
+	margin: 0;
+	padding-left: 2em;
+
+	counter-reset: number;
+}
+ol > li {
+	position: relative;
+	margin-bottom: 0.75em;
+	padding: 0.75em;
+
+	background-color: var(--bg0);
+
+	counter-increment: number;
+}
+ol > li::before {
+	display: block;
+	position: absolute;
+
+	content: counter(number);
+	color: var(--bg);
+	font-weight: 700;
+	text-align: center;
+	
+	height: calc(100% - 0.75em);
+	width: 2em;
+	left: -2em;
+	top: 0em;
+	padding-top: 0.75em;
+
+	background-color: var(--accent-color);
+}
+ol > li:last-child {
+	margin-bottom: 0;
 }
 
 body {
@@ -262,8 +309,9 @@ aside {
 }
 
 footer {
-	margin-top: 1rem;
+	margin-top: 1.5rem;
 	padding: 1rem;
+	padding-top: 0;
 	padding-bottom: calc( 1rem + var(--bottom-safe-area) );
 }
 footer hr {
@@ -285,7 +333,7 @@ nav, nav.xray {
 	
 	position: fixed;
 	width: calc( var(--sidebar-gutter-width) - var(--gutter-padding) );
-	top: max( min( 1%, 20rem ), 8rem );
+	top: 6rem;
 	left: calc( var(--left-content-margin) - var(--sidebar-gutter-width) );
 	padding: 0.5rem;
 	padding-right: 0;
@@ -407,6 +455,7 @@ x-author::before {
 x-date {
 	font-family: var(--impact-font);
 	color: var(--fg4);
+	margin-inline-start: 0.5em;
 }
 
 /* ======== Misc Styles ========*/
